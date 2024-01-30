@@ -16,7 +16,7 @@ import {
   Paper,
   Divider,
 } from "@mui/material";
-import { CollapsibleTableNoSSR } from "./DynamicComponents";
+import {ControleFrequenciaTableNoSSR } from "./DynamicComponents";
 
 export default function AdminInfoTable({ modalidades }: AdminPageProps) {
   const rows = Array.isArray(modalidades)
@@ -73,7 +73,7 @@ export default function AdminInfoTable({ modalidades }: AdminPageProps) {
       </TableContainer>
       <Divider />
       {rows.map((row, index) => (
-        <CollapsibleTableNoSSR
+        <ControleFrequenciaTableNoSSR
           key={index}
           alunosDaTurma={row.alunosdaTurma}
           nomeDaTurma={row.nomeDaTurma}
