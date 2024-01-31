@@ -17,15 +17,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/AdminPage.js"
     ],
-    "/StudentPresenceTable": [
+    "/StudentUpdatePersonalInformation": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/StudentPresenceTable.js"
-    ],
-    "/StudentUpdate": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/StudentUpdate.js"
+      "static/chunks/pages/StudentUpdatePersonalInformation.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",

@@ -17,13 +17,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { Avatar, Grid } from "@mui/material";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { Admincard } from "@/components/AdminCard";
 import { useData } from "@/context/context";
 import { TurmasInfoTableNoSSR } from "@/components/AdminPageTable/DynamicComponents";
 const drawerWidth = 240;
-
-
+import Link from "next/link";
 
 export default function AdminPage() {
   const { modalidades, fetchModalidades } = useData();
@@ -69,39 +66,64 @@ export default function AdminPage() {
 
       <Divider sx={{ marginTop: "35px" }} />
       <List>
-        {["Página Inicial", "Cadastro de Atletas", "Lista de Chamada"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+      <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <Link href="/">Página Inicial</Link>
+            </ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <Link href="/StudentRegistration">Cadastro de alunos</Link>
+            </ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <Link href="/StudentUpdateTurmas">Configuração de Turmas</Link>
+            </ListItemText>
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {["Configuração Turmas", "Alteração de Dados Cadastrais"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <Link href="/StudentPresenceTable">Cadastro de alunos</Link>
+            </ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <Link href="/StudentPresenceTable">Atualização de dados cadastrais</Link>
+            </ListItemText>
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
 
   // Remove this const when copying and pasting into your project.
- 
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -135,7 +157,6 @@ export default function AdminPage() {
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-         
           variant="temporary"
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
@@ -179,7 +200,7 @@ export default function AdminPage() {
         {/* Utilize o componente Grid para organizar os cartões em linha */}
         <Grid container spacing={2} justifyContent="center">
           {/* Cada cartão em um item de Grid */}
-         
+
           <Box>
             <TurmasInfoTableNoSSR modalidades={modalidades} />
           </Box>
@@ -189,4 +210,3 @@ export default function AdminPage() {
     </Box>
   );
 }
-

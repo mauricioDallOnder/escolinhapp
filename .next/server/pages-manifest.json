@@ -2,10 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/StudentUpdate": "pages/StudentUpdate.js",
-  "/StudentPresenceTable": "pages/StudentPresenceTable.js",
-  "/": "pages/index.js",
   "/AdminPage": "pages/AdminPage.js",
+  "/StudentUpdatePersonalInformation": "pages/StudentUpdatePersonalInformation.js",
+  "/api/UpdatedataFirebase": "pages/api/UpdatedataFirebase.js",
   "/api/GetDataFirebase": "pages/api/GetDataFirebase.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/StudentUpdateTurmas": "pages/StudentUpdateTurmas.js"
 }

@@ -14,7 +14,7 @@ interface PagadorMensalidades {
   celularWhatsapp: number | string;
 }
 
-interface InformacoesAdicionais {
+export interface InformacoesAdicionais {
   endereco: Endereco;
   pagadorMensalidades: PagadorMensalidades;
   cobramensalidade: string;
@@ -37,7 +37,7 @@ interface InformacoesAdicionais {
 
 export interface Aluno {
   id:number;
-  informacoesAdicionais?: InformacoesAdicionais;
+  informacoesAdicionais: InformacoesAdicionais;
   nome: string;
   anoNascimento: string;
   foto: string;
@@ -107,4 +107,15 @@ export interface ModalidadesData {
 export interface AttendanceModalContentProps {
   aluno: Aluno;
   month: string;
+}
+
+
+export interface IIAlunoUpdate extends Aluno {
+  modalidade: string; // A modalidade do aluno
+  nomeDaTurma: string; // O nome da turma do aluno
+  alunoId?: string | number; // O ID do aluno
+  anoNascimento: string; // A data de nascimento a serem atualizada
+  telefoneComWhatsapp: string| number;
+  nome: string;
+  informacoesAdicionais: InformacoesAdicionais
 }

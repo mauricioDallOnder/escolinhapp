@@ -16,11 +16,11 @@ import {
   Turma,
 } from "@/interface/interfaces";
 import { BoxStyleFrequencia, ListStyle} from "@/utils/Styles";
-import { AttendenceTable } from "@/components/AttendenceTable";
+import { ListaDeChamada } from "@/components/ListaDeChamada";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { GetServerSideProps } from "next";
-import { HeaderForm } from "@/components/HeaderForm";
+import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";
 
 export default function StudentPresenceTable() {
@@ -172,7 +172,7 @@ export default function StudentPresenceTable() {
             Pesquisar Turma
           </Button>
             {alunosDaTurma.length > 0 && (
-              <AttendenceTable
+              <ListaDeChamada
                 alunosDaTurma={alunosDaTurma}
                 setAlunosDaTurma={setAlunosDaTurma}
                 modalidade={watchedModalidade}

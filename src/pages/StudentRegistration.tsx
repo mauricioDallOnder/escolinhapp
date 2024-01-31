@@ -41,7 +41,7 @@ import {
 } from "@/utils/Styles";
 import Image from "next/image";
 import { useData } from "@/context/context";
-import { HeaderForm } from "@/components/HeaderForm";
+import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";
 
 export default function StudentRegistration() {

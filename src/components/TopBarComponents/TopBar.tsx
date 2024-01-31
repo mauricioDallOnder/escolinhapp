@@ -24,7 +24,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 const pages = [
   { title: "Cadastro de alunos", link: "/StudentRegistration" },
-  { title: "Atualização de dados", link: "/StudentUpdate" },
+  { title: "Painel do Administrador", link: "/AdminPage" },
   { title: "Frequencia Mensal", link: "/StudentPresenceTable" },
 ];
 
