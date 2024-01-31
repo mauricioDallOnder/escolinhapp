@@ -1,9 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
-  Aluno,
   FormValuesStudent,
-  Modalidade,
-  ModalidadesData,
   Turma,
 } from "@/interface/interfaces";
 import { useEffect, useState } from "react";
@@ -18,7 +15,6 @@ import {
   opcoesTermosAvisos,
 } from "@/utils/Constants";
 import {
-  Avatar,
   Box,
   Button,
   Container,
@@ -28,18 +24,14 @@ import {
   MenuItem,
   Radio,
   RadioGroup,
-  Select,
   TextField,
   Typography,
 } from "@mui/material";
 import {
   BoxStyleCadastro,
   ListStyle,
-  SubtituloDaPagina,
-  TituloDaPagina,
   TituloSecaoStyle,
 } from "@/utils/Styles";
-import Image from "next/image";
 import { useData } from "@/context/context";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";

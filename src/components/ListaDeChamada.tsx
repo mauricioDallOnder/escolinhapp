@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   Box,
   Container,
-
   TableBody,
   TableCell,
   TableHead,
@@ -17,12 +16,11 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import Table from '@mui/joy/Table';
+import Table from "@mui/joy/Table";
 import { Aluno, StudentPresenceTableProps } from "@/interface/interfaces"; // Importe a interface Aluno conforme definida
 import { DataContext } from "@/context/context";
 import { modalStyle } from "@/utils/Styles";
 import { ListaDeChamadaModal } from "./ListaDeChamadaModal";
-
 
 export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
   alunosDaTurma,
@@ -37,31 +35,35 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
   const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down('xs'));
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
 
   const tableContainerStyles = {
     marginTop: 2,
     marginBottom: 2,
-    overflowX: 'auto', // Permite rolagem horizontal
-    maxWidth: '100%',
-    ...(isXs && { // Estilos adicionais para telas pequenas
-      '& .MuiTableCell-sizeSmall': { // Diminui o padding das células para telas pequenas
-        padding: '6px 8px',
+    overflowX: "auto", // Permite rolagem horizontal
+    maxWidth: "100%",
+    ...(isXs && {
+      // Estilos adicionais para telas pequenas
+      "& .MuiTableCell-sizeSmall": {
+        // Diminui o padding das células para telas pequenas
+        padding: "6px 8px",
       },
-      '& .MuiTypography-root': { // Diminui o tamanho da fonte para telas pequenas
-        fontSize: '0.75rem',
+      "& .MuiTypography-root": {
+        // Diminui o tamanho da fonte para telas pequenas
+        fontSize: "0.75rem",
       },
     }),
   };
 
   // Gera uma lista de dias com base no mês selecionado
   const daysInMonth =
-  alunosDaTurma.length > 0
-    ? Object.keys(
-        alunosDaTurma.find((aluno) => aluno !== null)?.presencas[selectedMonth] || {}
-      )
-    : [];
-
+    alunosDaTurma.length > 0
+      ? Object.keys(
+          alunosDaTurma.find((aluno) => aluno !== null)?.presencas[
+            selectedMonth
+          ] || {}
+        )
+      : [];
 
   const handleOpenModal = (aluno: Aluno) => {
     setSelectedAluno(aluno);
@@ -78,10 +80,10 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
   };
   // Filtre os alunos com base na string de pesquisa
   const filteredAlunos = alunosDaTurma.filter((aluno) => {
-    // Verifique se o aluno não é nulo antes de acessar suas propriedades
+    // Verificar se o aluno não é nulo antes de acessar suas propriedades
     return aluno && aluno.nome.toLowerCase().includes(search.toLowerCase());
   });
-  
+
   const toggleAttendance = (alunoId: number, day: string) => {
     setAlunosDaTurma((current) =>
       current.map((student) => {
@@ -93,7 +95,7 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
               [day]: !student.presencas[selectedMonth][day],
             },
           };
-  
+
           // Preparar dados para a atualização
           const alunoUpdateData = {
             ...student,
@@ -103,32 +105,31 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
             alunoId: alunoId.toString(),
             presencas: updatedAttendance,
           };
-  
+
           // Chama a função do contexto para atualizar as presenças
           updateAttendanceInApi(alunoUpdateData);
-  
+
           return { ...student, presencas: updatedAttendance };
         }
         return student;
       })
     );
   };
-  
-  
-
 
   const countPresentStudents = () => {
     return alunosDaTurma.reduce((count, aluno) => {
       // Verifica se o aluno não é nulo e se tem presenças registradas para o mês e dia selecionados
-      const isPresent = aluno && aluno.presencas && aluno.presencas[selectedMonth] && aluno.presencas[selectedMonth][selectedDay];
+      const isPresent =
+        aluno &&
+        aluno.presencas &&
+        aluno.presencas[selectedMonth] &&
+        aluno.presencas[selectedMonth][selectedDay];
       return count + (isPresent ? 1 : 0);
     }, 0);
   };
-  
-  
+
   return (
     <Container>
-    
       <Box>
         <Modal
           open={isModalOpen}
@@ -143,8 +144,18 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
                 month={selectedMonth}
               />
             )}
-            <Box sx={{backgroundColor:"red"}}>
-            <Typography sx={{color:"black",fontWeight:"bold",textAlign:"center",padding:"5px"}}> Telefone para Emergência: {selectedAluno?.telefoneComWhatsapp}</Typography>
+            <Box sx={{ backgroundColor: "red" }}>
+              <Typography
+                sx={{
+                  color: "black",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                  padding: "5px",
+                }}
+              >
+                {" "}
+                Telefone para Emergência: {selectedAluno?.telefoneComWhatsapp}
+              </Typography>
             </Box>
           </Box>
         </Modal>
@@ -160,7 +171,14 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
           <MenuItem value="fevereiro">Fevereiro</MenuItem>
           <MenuItem value="março">Março</MenuItem>
           <MenuItem value="abril">Abril</MenuItem>
-          <MenuItem value="abril">maio</MenuItem>
+          <MenuItem value="maio">maio</MenuItem>
+          <MenuItem value="junho">junho</MenuItem>
+          <MenuItem value="julho">julho</MenuItem>
+          <MenuItem value="agosto">agosto</MenuItem>
+          <MenuItem value="setembro">setembro</MenuItem>
+          <MenuItem value="outubro">outubro</MenuItem>
+          <MenuItem value="novembro">novembro</MenuItem>
+          <MenuItem value="dezembro">dezembro</MenuItem>
         </TextField>
 
         {selectedMonth && (
@@ -179,7 +197,7 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
             ))}
           </TextField>
         )}
-          <TextField
+        <TextField
           label="Pesquisar por nome do aluno"
           variant="outlined"
           fullWidth
@@ -190,67 +208,105 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
 
         {selectedDay && (
           <TableContainer component={Paper} sx={tableContainerStyles}>
-          <Table borderAxis="both" size="sm" aria-label="tabela de presença" sx={{
-            minWidth:245,
-              '& th, & td': {
-                fontSize: isXs ? '0.75rem' : '0.75rem',
-                padding: isXs ? '8px' : '16px',
-              },
-              '& tr': {
-                height: isXs ? '40px' : '60px',
-              },
-              '& thead th': {
-                fontWeight: 'bold',
-                backgroundColor: '#eceff1',
-              },
-              '& tbody tr:nth-of-type(odd)': {
-                backgroundColor: 'rgba(247, 247, 247, 1)',
-              },
-              '& tbody tr:hover': {
-                backgroundColor: 'rgba(237, 245, 251, 1)',
-              },
-            }}>
-            <TableHead >
-              <TableRow>
-              <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#eceff1',textAlign:"center" }}>Nome do Aluno</TableCell>
-                  <TableCell align="center" sx={{ fontWeight: 'bold', backgroundColor: '#eceff1',textAlign:"center" }}>Frequência</TableCell>
-                  
-                  <TableCell align="center" sx={{ fontWeight: 'bold', backgroundColor: '#eceff1',textAlign:"center" }}>Exibir Informações do atleta</TableCell>
-                  
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredAlunos.map((aluno, index) => (
-                <TableRow key={aluno.nome} sx={{ '& > *': { borderBottom: 'unset' } }}>
-                  <TableCell sx={{fontWeight:"bold"}}>
-                    {aluno.nome}
+            <Table
+              borderAxis="both"
+              size="sm"
+              aria-label="tabela de presença"
+              sx={{
+                minWidth: 245,
+                "& th, & td": {
+                  fontSize: isXs ? "0.75rem" : "0.75rem",
+                  padding: isXs ? "8px" : "16px",
+                },
+                "& tr": {
+                  height: isXs ? "40px" : "60px",
+                },
+                "& thead th": {
+                  fontWeight: "bold",
+                  backgroundColor: "#eceff1",
+                },
+                "& tbody tr:nth-of-type(odd)": {
+                  backgroundColor: "rgba(247, 247, 247, 1)",
+                },
+                "& tbody tr:hover": {
+                  backgroundColor: "rgba(237, 245, 251, 1)",
+                },
+              }}
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    sx={{
+                      fontWeight: "bold",
+                      backgroundColor: "#eceff1",
+                      textAlign: "center",
+                    }}
+                  >
+                    Nome do Aluno
                   </TableCell>
                   <TableCell
                     align="center"
-                    sx={{color:"black",fontWeight:"bold"}}
-                    onClick={() => toggleAttendance(aluno.id, selectedDay)}
+                    sx={{
+                      fontWeight: "bold",
+                      backgroundColor: "#eceff1",
+                      textAlign: "center",
+                    }}
                   >
-                    {aluno.presencas[selectedMonth][selectedDay] ? "." : "F"}
+                    Frequência
                   </TableCell>
-                 
-                  <TableCell  onClick={() => handleOpenModal(aluno)}>
-                    <Button sx={{width:"50px",fontSize:"12px"}} variant="contained">
-                     Abrir
-                    </Button>
+
+                  <TableCell
+                    align="center"
+                    sx={{
+                      fontWeight: "bold",
+                      backgroundColor: "#eceff1",
+                      textAlign: "center",
+                    }}
+                  >
+                    Exibir Informações do atleta
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {filteredAlunos.map((aluno, index) => (
+                  <TableRow
+                    key={aluno.nome}
+                    sx={{ "& > *": { borderBottom: "unset" } }}
+                  >
+                    <TableCell sx={{ fontWeight: "bold" }}>
+                      {aluno.nome}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ color: "black", fontWeight: "bold" }}
+                      onClick={() => toggleAttendance(aluno.id, selectedDay)}
+                    >
+                      {aluno.presencas[selectedMonth][selectedDay] ? "." : "F"}
+                    </TableCell>
+
+                    <TableCell onClick={() => handleOpenModal(aluno)}>
+                      <Button
+                        sx={{ width: "50px", fontSize: "12px" }}
+                        variant="contained"
+                      >
+                        Abrir
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </TableContainer>
         )}
-  
       </Box>
       {selectedDay && (
-  <Typography sx={{color:"black",fontWeight:"bold"}} variant="subtitle1">
-    Número de alunos presentes: {countPresentStudents()}
-  </Typography>
-)}
+        <Typography
+          sx={{ color: "black", fontWeight: "bold" }}
+          variant="subtitle1"
+        >
+          Número de alunos presentes: {countPresentStudents()}
+        </Typography>
+      )}
     </Container>
   );
 };

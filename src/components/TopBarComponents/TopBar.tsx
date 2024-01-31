@@ -19,8 +19,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-import { useSession, signIn, signOut } from "next-auth/react";
-
+import { useSession, signOut } from "next-auth/react";
 
 const pages = [
   { title: "Cadastro de alunos", link: "/StudentRegistration" },
@@ -40,7 +39,7 @@ export default function ResponsiveAppBar() {
     if (session) {
       signOut();
     } else {
-      router.push('/LoginPage');
+      router.push("/LoginPage");
     }
   };
 
@@ -87,8 +86,8 @@ export default function ResponsiveAppBar() {
         </Link>
       ))}
       <Button variant="contained" onClick={handleAuthClick}>
-            {session ? "Deslogar" : "Login"}
-          </Button>
+        {session ? "Deslogar" : "Login"}
+      </Button>
     </List>
   );
 
@@ -155,10 +154,7 @@ export default function ResponsiveAppBar() {
           <CloseIcon />
         </IconButton>
         {drawerLinks}
-       
       </Drawer>
     </AppBar>
   );
 }
-
-

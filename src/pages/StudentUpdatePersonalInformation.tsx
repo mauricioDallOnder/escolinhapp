@@ -5,34 +5,17 @@ import {
   Button,
   Box,
   Container,
-  FormControlLabel,
   Grid,
   List,
-  MenuItem,
-  Radio,
-  RadioGroup,
   Typography,
 } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { DataContext } from "@/context/context";
-import {
-  Modalidade,
-  Aluno,
-  IIAlunoUpdate,
-  InformacoesAdicionais,
-  FormValuesStudent,
-} from "@/interface/interfaces";
+import { IIAlunoUpdate } from "@/interface/interfaces";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";
 import { BoxStyleCadastro, ListStyle, TituloSecaoStyle } from "@/utils/Styles";
-import {
-  fieldsIdentificacao,
-  fieldsDadosGeraisAtleta,
-  fieldsEndereco,
-  fieldsResponsavelMensalidade,
-  fieldsTermosAvisos,
-  opcoesTermosAvisos,
-} from "@/utils/Constants";
+
 import { GetServerSideProps } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
@@ -148,7 +131,6 @@ export default function StudentUpdatePersonalInformation() {
               <Autocomplete
                 options={alunosOptions}
                 getOptionLabel={(option) => {
-                  
                   return option ? option.nome : "";
                 }}
                 onChange={handleAlunoChange}
@@ -713,18 +695,22 @@ export default function StudentUpdatePersonalInformation() {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const session = await getServerSession(context.req, context.res, authOptions);
-  
-    // Se não tiver sessão ou não for admin, redirecione para a página de login
-    if (!session || session.user.role !== "admin") {
-      return {
-        redirect: {
-          destination: "/NotAllowPage",
-          permanent: false,
-        },
-      };
-    }
-  
-    // Retornar props aqui se a permissão for válida
-    return { props: { /* props adicionais aqui */ } };
+  const session = await getServerSession(context.req, context.res, authOptions);
+
+  // Se não tiver sessão ou não for admin, redirecione para a página de login
+  if (!session || session.user.role !== "admin") {
+    return {
+      redirect: {
+        destination: "/NotAllowPage",
+        permanent: false,
+      },
+    };
+  }
+
+  // Retornar props aqui se a permissão for válida
+  return {
+    props: {
+      /* props adicionais aqui */
+    },
   };
+};

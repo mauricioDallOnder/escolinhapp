@@ -1,14 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { Turma, Modalidade, AdminPageProps } from "@/interface/interfaces";
-import { DataContext } from "@/context/context";
-import { useContext, useState } from "react";
+import { AdminPageProps } from "@/interface/interfaces";
 import {
   TableRow,
   TableCell,
-  IconButton,
-  Collapse,
-  Typography,
   Table,
   TableHead,
   TableBody,
@@ -16,7 +11,7 @@ import {
   Paper,
   Divider,
 } from "@mui/material";
-import {ControleFrequenciaTableNoSSR } from "./DynamicComponents";
+import { ControleFrequenciaTableNoSSR } from "./DynamicComponents";
 
 export default function AdminInfoTable({ modalidades }: AdminPageProps) {
   const rows = Array.isArray(modalidades)

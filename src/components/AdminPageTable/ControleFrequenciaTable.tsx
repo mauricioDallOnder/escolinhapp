@@ -68,12 +68,12 @@ export default function ControleFrequenciaTable({
         <TableBody>
           {alunosDaTurma && alunosDaTurma.length > 0 ? (
             alunosDaTurma.map((aluno, index) => {
-              // Verifique se o aluno é nulo ou se o ID está ausente antes de tentar renderizar a linha
+              // Verifica se o aluno é nulo ou se o ID está ausente antes de tentar renderizar a linha
               if (!aluno || !aluno.id) {
                 // Não renderiza nada para este aluno
                 return null;
               }
-              // Continue com a renderização normal da linha, já que o aluno é válido
+              // Continua com a renderização normal da linha, já que o aluno é válido
               return (
                 <TableRow key={aluno.id}>
                   <TableCell
