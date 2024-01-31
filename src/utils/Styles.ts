@@ -117,3 +117,26 @@ export const cardMediaStyle = {
     marginTop:"10px"
   },
 };
+
+// Estilos para o Modal
+export const modalStyleTemporaly = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 'auto',
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 4,
+  outline: 'none', // Remove o foco do outline padrão
+  border: "10px solid",
+  borderImageSlice: "1",
+  borderWidth: "9px",
+  borderImageSource: "linear-gradient(to left, #FDA188, #FDA188)",
+  borderRadius: "3px",
+  fontSize: "16px",
+  display: "flex",
+  flexDirection: "column",
+  margin: "30px auto",
+  padding: "2.5em",
+};

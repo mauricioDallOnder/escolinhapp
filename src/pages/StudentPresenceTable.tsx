@@ -8,36 +8,33 @@ import {
   Button,
   List,
   Container,
+  Modal,
 } from "@mui/material";
 import { useData } from "@/context/context";
-import {
-  Aluno,
-  FormValuesStudent,
-  Turma,
-} from "@/interface/interfaces";
-import { BoxStyleFrequencia, ListStyle} from "@/utils/Styles";
+import { Aluno, FormValuesStudent, Turma } from "@/interface/interfaces";
+import { BoxStyleFrequencia, ListStyle } from "@/utils/Styles";
 import { ListaDeChamada } from "@/components/ListaDeChamada";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { GetServerSideProps } from "next";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";
+import TemporaryStudentRegistration from "@/components/TemporaryStudents/StudentTemporaryModalRegistration";
 
 export default function StudentPresenceTable() {
-  const { handleSubmit, watch, setValue } =
-    useForm<FormValuesStudent>({
-      defaultValues: {
-        modalidade: "", // Iniciar com valor vazio para evitar estado não controlado
-        turmaSelecionada: "",
-      },
-    });
+  const { handleSubmit, watch, setValue } = useForm<FormValuesStudent>({
+    defaultValues: {
+      modalidade: "", // Iniciar com valor vazio para evitar estado não controlado
+      turmaSelecionada: "",
+    },
+  });
   const { modalidades } = useData();
   const [selectedNucleo, setSelectedNucleo] = useState<string>("");
   const [nucleosDisponiveis, setNucleosDisponiveis] = useState<string[]>([]);
   const [turmasDisponiveis, setTurmasDisponiveis] = useState<Turma[]>([]);
   const [selectedTurma, setSelectedTurma] = useState<string>("");
   const [alunosDaTurma, setAlunosDaTurma] = useState<Aluno[]>([]);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const watchedModalidade = watch("modalidade");
 
   useEffect(() => {
@@ -83,6 +80,14 @@ export default function StudentPresenceTable() {
     setValue("turmaSelecionada", value); // Atualizar o valor da turma no formulário
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const onSubmit: SubmitHandler<FormValuesStudent> = async (data) => {
     const turmaEscolhida = modalidades
       .find((m) => m.nome === data.modalidade)
@@ -90,110 +95,133 @@ export default function StudentPresenceTable() {
 
     if (turmaEscolhida && Array.isArray(turmaEscolhida.alunos)) {
       setAlunosDaTurma(turmaEscolhida.alunos);
-      
     }
   };
 
-
   return (
     <Layout>
-    <Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box sx={BoxStyleFrequencia}>
-        <HeaderForm titulo={"Lista de Chamada"}/>
-          <List sx={ListStyle}>
-         
-            <Grid container spacing={2}>
-              {/* Campo para selecionar a modalidade */}
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  select
-                  required
-                  label="Modalidade"
-                  value={watchedModalidade}
-                  onChange={handleModalidadeChange}
-                  fullWidth
-                  variant="outlined"
-                  sx={{ marginBottom: 2 }}
-                >
-                  {modalidades.map((modalidade) => (
-                    <MenuItem key={modalidade.nome} value={modalidade.nome}>
-                      {modalidade.nome}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
+      <Container>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box sx={BoxStyleFrequencia}>
+            <HeaderForm titulo={"Lista de Chamada"} />
+            <List sx={ListStyle}>
+              <Grid container spacing={2}>
+                {/* Campo para selecionar a modalidade */}
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    select
+                    required
+                    label="Modalidade"
+                    value={watchedModalidade}
+                    onChange={handleModalidadeChange}
+                    fullWidth
+                    variant="outlined"
+                    sx={{ marginBottom: 2 }}
+                  >
+                    {modalidades
+                      .filter(
+                        (modalidade) =>
+                          modalidade.nome !== "arquivados"
+                      )
+                      .map((modalidade) => (
+                        <MenuItem key={modalidade.nome} value={modalidade.nome}>
+                          {modalidade.nome}
+                        </MenuItem>
+                      ))}
+                  </TextField>
+                </Grid>
 
-              {/* Campo para selecionar o núcleo */}
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  select
-                  label="Local de treinamento"
-                  value={selectedNucleo}
-                  onChange={handleNucleoChange}
-                  fullWidth
-                  required
-                  variant="outlined"
-                  sx={{ marginBottom: 2 }}
-                >
-                  {nucleosDisponiveis.map((nucleo) => (
-                    <MenuItem key={nucleo} value={nucleo}>
-                      {nucleo}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
+                {/* Campo para selecionar o núcleo */}
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    select
+                    label="Local de treinamento"
+                    value={selectedNucleo}
+                    onChange={handleNucleoChange}
+                    fullWidth
+                    required
+                    variant="outlined"
+                    sx={{ marginBottom: 2 }}
+                  >
+                    {nucleosDisponiveis.map((nucleo) => (
+                      <MenuItem key={nucleo} value={nucleo}>
+                        {nucleo}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </Grid>
 
-              {/* Campo para selecionar a turma */}
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  select
-                  label="Turma"
-                  value={selectedTurma}
-                  onChange={handleTurmaChange}
-                  fullWidth
-                  required
-                  variant="outlined"
-                  sx={{ marginBottom: 2 }}
-                >
-                  {turmasDisponiveis.map((turma) => (
-                    <MenuItem
-                      key={turma.nome_da_turma}
-                      value={turma.nome_da_turma}
-                    >
-                      {turma.nome_da_turma}
-                    </MenuItem>
-                  ))}
-                </TextField>
+                {/* Campo para selecionar a turma */}
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    select
+                    label="Turma"
+                    value={selectedTurma}
+                    onChange={handleTurmaChange}
+                    fullWidth
+                    required
+                    variant="outlined"
+                    sx={{ marginBottom: 2 }}
+                  >
+                    {turmasDisponiveis.map((turma) => (
+                      <MenuItem
+                        key={turma.nome_da_turma}
+                        value={turma.nome_da_turma}
+                      >
+                        {turma.nome_da_turma}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </Grid>
               </Grid>
-             
-            </Grid>
-             <Button sx={{width:"100%", marginBottom:"12px"}} type="submit" variant="contained">
-            Pesquisar Turma
-          </Button>
-            {alunosDaTurma.length > 0 && (
-              <ListaDeChamada
-                alunosDaTurma={alunosDaTurma}
-                setAlunosDaTurma={setAlunosDaTurma}
-                modalidade={watchedModalidade}
-                nomeDaTurma={selectedTurma}
-              />
-            )}
-          </List>
-          
-        </Box>
-      </form>
-    </Container>
+              <Button
+                sx={{ width: "100%", marginBottom: "12px" }}
+                type="submit"
+                variant="contained"
+              >
+                Pesquisar Turma
+              </Button>
+              {alunosDaTurma.length > 0 && (
+                <ListaDeChamada
+                  alunosDaTurma={alunosDaTurma}
+                  setAlunosDaTurma={setAlunosDaTurma}
+                  modalidade={watchedModalidade}
+                  nomeDaTurma={selectedTurma}
+                />
+              )}
+            </List>
+            <Button
+          sx={{fontSize: "12px" }}
+          color="error"
+          variant="contained"
+          onClick={() => handleOpenModal()}
+        >
+          Adicionar aluno temporário
+        </Button>
+          </Box>
+        </form>
+        <Modal
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <TemporaryStudentRegistration handleCloseModal={handleCloseModal} />
+      </Modal>
+       
+      </Container>
     </Layout>
   );
 }
-
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getServerSession(context.req, context.res, authOptions);
 
   // Permitir acesso se o usuário for admin ou professor
-  if (!session || (session.user.role !== "admin" && session.user.role !== "professor")) {
+  if (
+    !session ||
+    (session.user.role !== "admin" && session.user.role !== "professor")
+  ) {
     return {
       redirect: {
         destination: "/NotAllowPage",

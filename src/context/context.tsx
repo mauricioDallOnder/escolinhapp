@@ -27,7 +27,6 @@ interface ChildrenProps {
 interface DataContextType {
   ContextData: FormValuesStudent[];
   sendDataToApi: (data: FormValuesStudent) => Promise<void>;
-  sendTemporaryRegistrationDataToApi: (data: FormValuesStudenTemporary) => Promise<void>;
   updateDataInApi: (data: IIAlunoUpdate) => Promise<void>;
   modalidades: Modalidade[]; // Adicione esta linha
   fetchModalidades: () => Promise<void>; // Adicione esta linha
@@ -38,7 +37,6 @@ interface DataContextType {
 const DataContext = createContext<DataContextType>({
   ContextData: [],
   sendDataToApi: async () => {},
-  sendTemporaryRegistrationDataToApi: async () => {},
   updateDataInApi: async () => {},
   modalidades: [],
   fetchModalidades: async () => {},
@@ -99,18 +97,6 @@ const sendDataToApi = async (data: FormValuesStudent) => {
       console.error("Ocorreu um erro ao enviar dados para a API:", error);
     }
   };
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// cadastrar novo estudante temporario
-const sendTemporaryRegistrationDataToApi = async (data: FormValuesStudenTemporary) => {
-  try {
-    const response = await axios.post("/api/RegisterTemporaryStudent", data);
-   
-    setDataStudents(response.data);
-  } catch (error) {
-    console.error("Ocorreu um erro ao enviar dados para a API:", error);
-  }
-};
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // atualizar informações pessoais do estudante
 const updateDataInApi = async (data: IIAlunoUpdate ) => {
@@ -242,7 +228,6 @@ const updateAttendanceInApi = async (data: AlunoPresencaUpdate) => {
         fetchModalidades,
         updateAttendanceInApi,
         moveStudentInApi,
-        sendTemporaryRegistrationDataToApi
       }}
     >
       {children}
