@@ -1,29 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
-  Box,
   Button,
   Container,
   Grid,
   TextField,
   Typography,
   MenuItem,
-  Divider,
-  List,
-  Modal,
+
   Paper,
 } from "@mui/material";
-import Layout from "@/components/TopBarComponents/Layout";
 import {
-  BoxStyleCadastro,
-  ListStyle,
   TituloSecaoStyle,
   modalStyleTemporaly,
 } from "@/utils/Styles";
 import { extrairDiaDaSemana, gerarPresencasParaAluno } from "@/utils/Constants";
 import { useData } from "@/context/context";
 import {
-  FormValuesStudenTemporary,
   FormValuesStudent,
   Turma,
 } from "@/interface/interfaces";
