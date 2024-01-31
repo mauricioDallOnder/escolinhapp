@@ -38230,6 +38230,276 @@
           ]
         }
       ]
+    },
+    "temporarios":{
+      "turmas":[
+        {
+          "nome_da_turma": "TEMPORARIO",
+          "modalidade": "temporarios",
+          "nucleo": "temporarios",
+          "categoria": "temporarios",
+          "capacidade_maxima_da_turma": 9999999,
+          "capacidade_atual_da_turma": 1,
+          "alunos": [
+            {
+              "informacoesAdicionais": {
+                "endereco": {
+                  "ruaAvenida": "temporarios ",
+                  "numeroResidencia": 121,
+                  "bairro": "temporarios",
+                  "cep": 95110383,
+                  "complemento": "temporarios"
+                },
+                "pagadorMensalidades": {
+                  "nomeCompleto": "temporarios ",
+                  "cpf": 94934312072,
+                  "email": "temporarios",
+                  "celularWhatsapp": "temporarios"
+                },
+                "cobramensalidade": "temporarios.",
+                "escolaEstuda": "temporarios",
+                "irmaos": "Não ",
+                "saude": "Sim",
+                "problemasaude": "Nao ",
+                "medicacao": "Não",
+                "tipomedicacao": "",
+                "convenio": "Unimed",
+                "nucleoTreinamento": "temporarios",
+                "modalidadesPraticadas": [
+                  "temporariosl",
+                  "temporarios"
+                ],
+                "competicao": "Sim",
+                "comprometimentoMensalidade": "Concordo em realizar o pagamento antecipado até dia 10 de cada mês.",
+                "copiaDocumento": "Comprometo-me a providenciar cópia autenticada do RG e atestado médico.",
+                "imagem": "Sim, autorizo.",
+                "avisaAusencia": "Sim, avisarei sobre ausências aos treinos.",
+                "desconto": "Ciente."
+              },
+              "nome": "ALUNO temporario",
+              "anoNascimento": "06/01/1993",
+              "foto": "POhfeK2SJgV5dmk",
+              "telefoneComWhatsapp": "6666666",
+              "presencas": {
+                "janeiro": {
+                  "2-1-2024": false,
+                  "9-1-2024": false,
+                  "16-1-2024": false,
+                  "23-1-2024": false,
+                  "30-1-2024": false
+                },
+                "fevereiro": {
+                  "6-2-2024": false,
+                  "13-2-2024": false,
+                  "20-2-2024": false,
+                  "27-2-2024": false
+                },
+                "março": {
+                  "5-3-2024": false,
+                  "12-3-2024": false,
+                  "19-3-2024": false,
+                  "26-3-2024": false
+                },
+                "abril": {
+                  "2-4-2024": false,
+                  "9-4-2024": false,
+                  "16-4-2024": false,
+                  "23-4-2024": false,
+                  "30-4-2024": false
+                },
+                "maio": {
+                  "7-5-2024": false,
+                  "14-5-2024": false,
+                  "21-5-2024": false,
+                  "28-5-2024": false
+                },
+                "junho": {
+                  "4-6-2024": false,
+                  "11-6-2024": false,
+                  "18-6-2024": false,
+                  "25-6-2024": false
+                },
+                "julho": {
+                  "2-7-2024": false,
+                  "9-7-2024": false,
+                  "16-7-2024": false,
+                  "23-7-2024": false,
+                  "30-7-2024": false
+                },
+                "agosto": {
+                  "6-8-2024": false,
+                  "13-8-2024": false,
+                  "20-8-2024": false,
+                  "27-8-2024": false
+                },
+                "setembro": {
+                  "3-9-2024": false,
+                  "10-9-2024": false,
+                  "17-9-2024": false,
+                  "24-9-2024": false
+                },
+                "outubro": {
+                  "1-10-2024": false,
+                  "8-10-2024": false,
+                  "15-10-2024": false,
+                  "22-10-2024": false,
+                  "29-10-2024": false
+                },
+                "novembro": {
+                  "5-11-2024": false,
+                  "12-11-2024": false,
+                  "19-11-2024": false,
+                  "26-11-2024": false
+                },
+                "dezembro": {
+                  "3-12-2024": false,
+                  "10-12-2024": false,
+                  "17-12-2024": false,
+                  "24-12-2024": false,
+                  "31-12-2024": false
+                }
+              }
+            }
+            
+          ]
+        }
+      ]
+
+    },
+    "arquivados":{
+      "turmas":[
+        {
+          "nome_da_turma": "arquivados",
+          "modalidade": "arquivados",
+          "nucleo": "arquivados",
+          "categoria": "arquivados",
+          "capacidade_maxima_da_turma": 9999999,
+          "capacidade_atual_da_turma": 1,
+          "alunos": [
+            {
+              "informacoesAdicionais": {
+                "endereco": {
+                  "ruaAvenida": "arquivados ",
+                  "numeroResidencia": 121,
+                  "bairro": "arquivados",
+                  "cep": 95110383,
+                  "complemento": "arquivados"
+                },
+                "pagadorMensalidades": {
+                  "nomeCompleto": "temporarios ",
+                  "cpf": 94934312072,
+                  "email": "temporarios",
+                  "celularWhatsapp": "temporarios"
+                },
+                "cobramensalidade": "temporarios.",
+                "escolaEstuda": "temporarios",
+                "irmaos": "Não ",
+                "saude": "Sim",
+                "problemasaude": "Nao ",
+                "medicacao": "Não",
+                "tipomedicacao": "",
+                "convenio": "Unimed",
+                "nucleoTreinamento": "temporarios",
+                "modalidadesPraticadas": [
+                  "temporariosl",
+                  "temporarios"
+                ],
+                "competicao": "Sim",
+                "comprometimentoMensalidade": "Concordo em realizar o pagamento antecipado até dia 10 de cada mês.",
+                "copiaDocumento": "Comprometo-me a providenciar cópia autenticada do RG e atestado médico.",
+                "imagem": "Sim, autorizo.",
+                "avisaAusencia": "Sim, avisarei sobre ausências aos treinos.",
+                "desconto": "Ciente."
+              },
+              "nome": "ALUNO arquivados",
+              "anoNascimento": "06/01/1993",
+              "foto": "POhfeK2SJgV5dmk",
+              "telefoneComWhatsapp": "6666666",
+              "presencas": {
+                "janeiro": {
+                  "2-1-2024": false,
+                  "9-1-2024": false,
+                  "16-1-2024": false,
+                  "23-1-2024": false,
+                  "30-1-2024": false
+                },
+                "fevereiro": {
+                  "6-2-2024": false,
+                  "13-2-2024": false,
+                  "20-2-2024": false,
+                  "27-2-2024": false
+                },
+                "março": {
+                  "5-3-2024": false,
+                  "12-3-2024": false,
+                  "19-3-2024": false,
+                  "26-3-2024": false
+                },
+                "abril": {
+                  "2-4-2024": false,
+                  "9-4-2024": false,
+                  "16-4-2024": false,
+                  "23-4-2024": false,
+                  "30-4-2024": false
+                },
+                "maio": {
+                  "7-5-2024": false,
+                  "14-5-2024": false,
+                  "21-5-2024": false,
+                  "28-5-2024": false
+                },
+                "junho": {
+                  "4-6-2024": false,
+                  "11-6-2024": false,
+                  "18-6-2024": false,
+                  "25-6-2024": false
+                },
+                "julho": {
+                  "2-7-2024": false,
+                  "9-7-2024": false,
+                  "16-7-2024": false,
+                  "23-7-2024": false,
+                  "30-7-2024": false
+                },
+                "agosto": {
+                  "6-8-2024": false,
+                  "13-8-2024": false,
+                  "20-8-2024": false,
+                  "27-8-2024": false
+                },
+                "setembro": {
+                  "3-9-2024": false,
+                  "10-9-2024": false,
+                  "17-9-2024": false,
+                  "24-9-2024": false
+                },
+                "outubro": {
+                  "1-10-2024": false,
+                  "8-10-2024": false,
+                  "15-10-2024": false,
+                  "22-10-2024": false,
+                  "29-10-2024": false
+                },
+                "novembro": {
+                  "5-11-2024": false,
+                  "12-11-2024": false,
+                  "19-11-2024": false,
+                  "26-11-2024": false
+                },
+                "dezembro": {
+                  "3-12-2024": false,
+                  "10-12-2024": false,
+                  "17-12-2024": false,
+                  "24-12-2024": false,
+                  "31-12-2024": false
+                }
+              }
+            }
+            
+          ]
+        }
+      ]
+
     }
   }
 }

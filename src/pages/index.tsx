@@ -4,27 +4,11 @@ import { Inter } from "next/font/google";
 import { Container, Grid, Card, CardMedia, Typography } from "@mui/material";
 import Link from "next/link";
 import Layout from "@/components/TopBarComponents/Layout";
+import { cardStyle, cardMediaStyle } from "@/utils/Styles";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const cardStyle = {
-    textAlign: "center",
-    background: "transparent",
-    boxShadow: "none", // Isso remove a borda/caixa de sombra
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  };
 
-  const cardMediaStyle = {
-    // Estilos para responsividade - altera o tamanho baseado no tamanho da tela
-    "@media (max-width:600px)": {
-      height: "70%", // ou um valor específico em pixels
-      width: "70%", // ou um valor específico em pixels
-      marginTop:"10px"
-    },
-  };
   return (
     <>
       <Head>
@@ -44,14 +28,17 @@ export default function Home() {
             padding: '16px', // Adiciona algum espaçamento em volta do conteúdo
             '@media (max-width:600px)': {
               minHeight: 'calc(100vh - 56px)', // Altura ajustada para considerar a AppBar em dispositivos móveis
+              textAlign:"center"
             }
           }}>
             <Grid container spacing={4} sx={{
               maxWidth: 'md', // Define a largura máxima do grid para que não fique muito espaçado
               justifyContent: 'space-around', // Centraliza horizontalmente os Grid items
             }}>
-              <Grid item xs={12} sm={6} md={3}>
-                <Link href="/StudentRegistration">
+                <Grid item xs={12} sm={6} md={3}>
+                <Link href="/StudentRegistration" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  {" "}
+                  {/* Adiciona o link para o Card */}
                   <Card sx={cardStyle}>
                     <CardMedia
                       sx={cardMediaStyle}
@@ -61,15 +48,15 @@ export default function Home() {
                       image="https://firebasestorage.googleapis.com/v0/b/chat-dos-otarios.appspot.com/o/ceab%2Fresume.png?alt=media&token=6edbaf5e-7e2b-40a0-a3e2-9811e3631a75"
                       alt=""
                     />
-                    <Typography color="#FFFF" mt={3} variant="h5" sx={{listStyle:"none"}}>
-                      Cadastro de alunos
+                    <Typography color="#FFFF" mt={3} variant="h5">
+                      Cadastro de Atletas
                     </Typography>
                     <Typography color="#FFFF" mt={27} variant="h5"></Typography>
                   </Card>
                 </Link>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
-                <Link href="/StudentUpdate">
+                <Link href="/StudentUpdate" style={{ textDecoration: 'none', color: 'inherit' }}>
                   {" "}
                   {/* Adiciona o link para o Card */}
                   <Card sx={cardStyle}>
@@ -89,7 +76,7 @@ export default function Home() {
                 </Link>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
-                <Link href="/StudentPresenceTable">
+                <Link href="/StudentPresenceTable" style={{ textDecoration: 'none', color: 'inherit' }}>
                   {" "}
                   {/* Adiciona o link para o Card */}
                   <Card sx={cardStyle}>

@@ -12,6 +12,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from '@mui/icons-material/Home';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import UpdateIcon from '@mui/icons-material/Update';
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
@@ -45,9 +50,8 @@ export default function AdminPage() {
   };
 
   const drawer = (
-    <Box suppressHydrationWarning>
+    <Box>
       <Toolbar />
-
       <Avatar
         sx={{
           width: 80,
@@ -65,66 +69,54 @@ export default function AdminPage() {
           objectFit="contain"
         />
       </Avatar>
-
-      <Divider sx={{ marginTop: "35px" }} />
+      <Divider sx={{ my: 3 }} />
       <List>
-      <ListItem disablePadding>
+        <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <MailIcon />
+              <HomeIcon />
             </ListItemIcon>
-            <ListItemText>
-              <Link href="/">Página Inicial</Link>
-            </ListItemText>
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/">Página Inicial</Link>} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <MailIcon />
+              <GroupAddIcon />
             </ListItemIcon>
-            <ListItemText>
-              <Link href="/StudentRegistration">Cadastro de alunos</Link>
-            </ListItemText>
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentRegistration">Cadastro de alunos</Link>} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <MailIcon />
+              <SettingsIcon />
             </ListItemIcon>
-            <ListItemText>
-              <Link href="/StudentUpdateTurmas">Configuração de Turmas</Link>
-            </ListItemText>
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentUpdateTurmas">Configuração de Turmas</Link>} />
           </ListItemButton>
         </ListItem>
       </List>
-      <Divider />
+      <Divider sx={{ my: 2 }} />
       <List>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <MailIcon />
+              <ListAltIcon />
             </ListItemIcon>
-            <ListItemText>
-              <Link href="/StudentPresenceTable">Cadastro de alunos</Link>
-            </ListItemText>
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentPresenceTable">Lista de Presença</Link>} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <MailIcon />
+              <UpdateIcon />
             </ListItemIcon>
-            <ListItemText>
-              <Link href="/StudentUpdatePersonalInformation">Atualização de dados cadastrais</Link>
-            </ListItemText>
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentUpdatePersonalInformation">Atualização de dados cadastrais</Link>} />
           </ListItemButton>
         </ListItem>
       </List>
     </Box>
   );
-
   // Remove this const when copying and pasting into your project.
 
   return (

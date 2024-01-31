@@ -97,3 +97,23 @@ export const modalStyle = {
     },
   },
 };
+
+export const cardStyle = {
+  textAlign: "center",
+  background: "transparent",
+  boxShadow: "none", // Isso remove a borda/caixa de sombra
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+export const cardMediaStyle = {
+   textDecoration: 'none',
+   color: 'inherit' ,
+  "@media (max-width:600px)": {
+    height: "70%", // ou um valor específico em pixels
+    width: "70%", // ou um valor específico em pixels
+    marginTop:"10px"
+  },
+};
