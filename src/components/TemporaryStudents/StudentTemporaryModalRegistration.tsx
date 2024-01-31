@@ -14,7 +14,7 @@ import {
   TituloSecaoStyle,
   modalStyleTemporaly,
 } from "@/utils/Styles";
-import { extrairDiaDaSemana, gerarPresencasParaAluno } from "@/utils/constants";
+import { extrairDiaDaSemana, gerarPresencasParaAluno } from "@/utils/Constants";
 import { useData } from "@/context/context";
 import {
   FormValuesStudent,

@@ -13,7 +13,7 @@ import {
   fieldsTermosAvisos,
   gerarPresencasParaAluno,
   opcoesTermosAvisos,
-} from "@/utils/constants";
+} from "@/utils/Constants";
 import {
   Box,
   Button,
