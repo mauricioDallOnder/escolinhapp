@@ -13,8 +13,8 @@ import {
 import {
   TituloSecaoStyle,
   modalStyleTemporaly,
-} from "@/utils/Styles";
-import { extrairDiaDaSemana, gerarPresencasParaAluno } from "@/utils/Constants";
+} from "@/utils/styles";
+import { extrairDiaDaSemana, gerarPresencasParaAluno } from "@/utils/constants";
 import { useData } from "@/context/context";
 import {
   FormValuesStudent,

@@ -13,7 +13,7 @@ import {
   fieldsTermosAvisos,
   gerarPresencasParaAluno,
   opcoesTermosAvisos,
-} from "@/utils/Constants";
+} from "@/utils/constants";
 import {
   Box,
   Button,
@@ -31,7 +31,7 @@ import {
   BoxStyleCadastro,
   ListStyle,
   TituloSecaoStyle,
-} from "@/utils/Styles";
+} from "@/utils/styles";
 import { useData } from "@/context/context";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";

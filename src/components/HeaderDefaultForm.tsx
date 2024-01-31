@@ -1,4 +1,4 @@
-import { TituloDaPagina, SubtituloDaPagina } from "@/utils/Styles";
+import { TituloDaPagina, SubtituloDaPagina } from "@/utils/styles";
 import { Box, Avatar, Typography } from "@mui/material";
 import Image from "next/image";
 

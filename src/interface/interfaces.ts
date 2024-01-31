@@ -41,7 +41,6 @@ export interface Aluno {
   informacoesAdicionais: InformacoesAdicionais;
   nome: string;
   anoNascimento: string;
-  foto: string;
   telefoneComWhatsapp: number | string;
   presencas: Record<string, Record<string, boolean>>;
 }

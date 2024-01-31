@@ -2,7 +2,6 @@ export const fieldsIdentificacao = [
     { label: "Nome do Aluno", id: "aluno.nome" },
     { label: "Data de Nascimento", id: "aluno.anoNascimento" },
     { label: "Telefone", id: "aluno.telefoneComWhatsapp" },
-    { label: "Foto", id: "aluno.foto" }
   
   ];
   export const fieldsEndereco = [

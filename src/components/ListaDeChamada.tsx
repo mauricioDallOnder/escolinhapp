@@ -19,7 +19,7 @@ import {
 import Table from "@mui/joy/Table";
 import { Aluno, StudentPresenceTableProps } from "@/interface/interfaces"; // Importe a interface Aluno conforme definida
 import { DataContext } from "@/context/context";
-import { modalStyle } from "@/utils/Styles";
+import { modalStyle } from "@/utils/styles";
 import { ListaDeChamadaModal } from "./ListaDeChamadaModal";
 
 export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({

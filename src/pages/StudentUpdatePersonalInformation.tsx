@@ -14,7 +14,7 @@ import { DataContext } from "@/context/context";
 import { IIAlunoUpdate } from "@/interface/interfaces";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";
-import { BoxStyleCadastro, ListStyle, TituloSecaoStyle } from "@/utils/Styles";
+import { BoxStyleCadastro, ListStyle, TituloSecaoStyle } from "@/utils/styles";
 
 import { GetServerSideProps } from "next";
 import { getServerSession } from "next-auth";

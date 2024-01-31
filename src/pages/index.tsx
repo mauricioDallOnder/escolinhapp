@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { Container, Grid, Card, CardMedia, Typography } from "@mui/material";
 import Link from "next/link";
 import Layout from "@/components/TopBarComponents/Layout";
-import { cardStyle, cardMediaStyle } from "@/utils/Styles";
+import { cardStyle, cardMediaStyle } from "@/utils/styles";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {

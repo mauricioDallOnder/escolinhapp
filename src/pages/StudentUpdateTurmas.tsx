@@ -8,7 +8,7 @@ import { DataContext } from "@/context/context";
 import {
  Modalidade, Turma
 } from "@/interface/interfaces";
-import { BoxStyleCadastro} from "@/utils/Styles";
+import { BoxStyleCadastro} from "@/utils/styles";
 import { GetServerSideProps } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";

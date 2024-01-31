@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useData } from "@/context/context";
 import { Aluno, FormValuesStudent, Turma } from "@/interface/interfaces";
-import { BoxStyleFrequencia, ListStyle } from "@/utils/Styles";
+import { BoxStyleFrequencia, ListStyle } from "@/utils/styles";
 import { ListaDeChamada } from "@/components/ListaDeChamada";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
