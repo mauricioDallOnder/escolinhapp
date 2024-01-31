@@ -93,7 +93,7 @@ async function fetchModalidades() {
 const sendDataToApi = async (data: FormValuesStudent) => {
     try {
       const response = await axios.post("/api/SubmitFormRegistration", data);
-      console.log("Response data:", response.data);
+      
       setDataStudents(response.data);
     } catch (error) {
       console.error("Ocorreu um erro ao enviar dados para a API:", error);
@@ -105,7 +105,7 @@ const sendDataToApi = async (data: FormValuesStudent) => {
 const sendTemporaryRegistrationDataToApi = async (data: FormValuesStudenTemporary) => {
   try {
     const response = await axios.post("/api/RegisterTemporaryStudent", data);
-    console.log("Response data:", response.data);
+   
     setDataStudents(response.data);
   } catch (error) {
     console.error("Ocorreu um erro ao enviar dados para a API:", error);
@@ -138,7 +138,7 @@ const updateDataInApi = async (data: IIAlunoUpdate ) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       } else {
         const responseData = await response.json();
-        console.log("Success:", responseData);
+       
       }
     } catch (error) {
       console.error("Erro ao atualizar presença:", error);

@@ -90,7 +90,7 @@ export default function StudentPresenceTable() {
 
     if (turmaEscolhida && Array.isArray(turmaEscolhida.alunos)) {
       setAlunosDaTurma(turmaEscolhida.alunos);
-      console.log("Alunos da Turma:", turmaEscolhida!.alunos);
+      
     }
   };
 

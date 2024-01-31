@@ -35,7 +35,7 @@ export default function TemporaryStudentRegistration() {
   
     try {
       await sendTemporaryRegistrationDataToApi(fullData);
-      console.log("Dados enviados:", fullData);
+      
       alert("Cadastro temporário efetuado com sucesso");
       reset(); // Reset form
       fetchModalidades(); // Refresh the data

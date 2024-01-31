@@ -148,7 +148,7 @@ export default function StudentUpdatePersonalInformation() {
               <Autocomplete
                 options={alunosOptions}
                 getOptionLabel={(option) => {
-                  //console.log(option); // Para depurar o valor de cada opção
+                  
                   return option ? option.nome : "";
                 }}
                 onChange={handleAlunoChange}
