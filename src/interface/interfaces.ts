@@ -1,3 +1,4 @@
+
 // Definindo interfaces para os tipos de dados
 interface Endereco {
   ruaAvenida: string;
@@ -98,6 +99,15 @@ export type FormValuesStudent = {
   turmaSelecionada: string; // nome da turma selecionada
   nucleoSelecionado: string; // nome do núcleo selecionado
 };
+
+export interface FormValuesStudenTemporary{
+  nomeAluno: string; // nome do aluno deve ser uma string
+  daysOfWeek?: string; // dia da semana selecionado
+  modalidade: string; // nome da modalidade selecionada
+  turmaSelecionada?: string;
+  presencas: Record<string, Record<string, boolean>>
+  
+}
 
 
 export interface ModalidadesData {
