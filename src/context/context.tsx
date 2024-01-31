@@ -6,10 +6,7 @@ import {
   ModalidadesData,
   AlunoPresencaUpdate,
   MoveStudentPayload,
-  Aluno,
-  Turma,
   IIAlunoUpdate,
-  FormValuesStudenTemporary,
 } from "../interface/interfaces";
 import axios from "axios";
 import React, {
