@@ -4,7 +4,7 @@ if (!admin.apps.length) {
   const serviceAccount = require('./serviceKey.json');
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount), // Substitua serviceAccount pelo seu arquivo de credenciais
-    databaseURL: 'https://bancodedados-ce34e-default-rtdb.firebaseio.com/', // Substitua pela sua URL do banco de dados
+    databaseURL: 'https://backend-b09a9-default-rtdb.firebaseio.com', // Substitua pela sua URL do banco de dados
   });
 }
 
