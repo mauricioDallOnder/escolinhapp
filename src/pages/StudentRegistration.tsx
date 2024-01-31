@@ -31,7 +31,7 @@ import {
   BoxStyleCadastro,
   ListStyle,
   TituloSecaoStyle,
-} from "@/utils/styles";
+} from "@/utils/Styles";
 import { useData } from "@/context/context";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";

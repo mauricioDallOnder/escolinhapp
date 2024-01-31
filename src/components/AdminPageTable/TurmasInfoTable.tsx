@@ -13,8 +13,9 @@ import {
   Modal,
   TextField,
 } from "@mui/material";
-import { modalStyle } from "@/utils/styles";
+
 import { ControleFrequenciaTableNoSSR } from "./DynamicComponents";
+import { modalStyle } from "@/utils/Styles";
 
 export default function TurmasInfoTable({ modalidades }: AdminPageProps) {
   const [search, setSearch] = useState("");

@@ -13,7 +13,7 @@ import {
 import {
   TituloSecaoStyle,
   modalStyleTemporaly,
-} from "@/utils/styles";
+} from "@/utils/Styles";
 import { extrairDiaDaSemana, gerarPresencasParaAluno } from "@/utils/constants";
 import { useData } from "@/context/context";
 import {

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
-  TextField, Button, Box, Autocomplete, Container, Typography, Avatar
+  TextField, Button, Box, Autocomplete, Container,
 } from "@mui/material";
 
 import { DataContext } from "@/context/context";
 import {
  Modalidade, Turma
 } from "@/interface/interfaces";
-import { BoxStyleCadastro} from "@/utils/styles";
+import { BoxStyleCadastro} from "@/utils/Styles";
 import { GetServerSideProps } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
