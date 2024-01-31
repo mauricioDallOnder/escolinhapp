@@ -158,6 +158,9 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
         >
           <MenuItem value="janeiro">Janeiro</MenuItem>
           <MenuItem value="fevereiro">Fevereiro</MenuItem>
+          <MenuItem value="março">Março</MenuItem>
+          <MenuItem value="abril">Abril</MenuItem>
+          <MenuItem value="abril">maio</MenuItem>
         </TextField>
 
         {selectedMonth && (

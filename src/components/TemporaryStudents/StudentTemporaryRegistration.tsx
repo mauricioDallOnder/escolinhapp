@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Box, Button, Container, Grid, TextField, Typography, MenuItem } from '@mui/material';
+import { Box, Button, Container, Grid, TextField, Typography, MenuItem,Divider } from '@mui/material';
 import Layout from '@/components/TopBarComponents/Layout';
 import { BoxStyleCadastro, TituloSecaoStyle } from '@/utils/Styles';
 import { extrairDiaDaSemana, gerarPresencasParaAluno } from '@/utils/Constants';
@@ -10,7 +10,7 @@ import { FormValuesStudenTemporary } from '@/interface/interfaces';
 
 
 export default function TemporaryStudentRegistration() {
-    const { sendTemporaryRegistrationDataToApi } = useData();
+    const { sendTemporaryRegistrationDataToApi,fetchModalidades } = useData();
   const { register, handleSubmit,reset, formState: { isSubmitting } } = useForm<FormValuesStudenTemporary>({
     defaultValues: {
       nomeAluno: '', // Initialize as empty string
@@ -37,6 +37,8 @@ export default function TemporaryStudentRegistration() {
       await sendTemporaryRegistrationDataToApi(fullData);
       console.log("Dados enviados:", fullData);
       alert("Cadastro temporário efetuado com sucesso");
+      reset(); // Reset form
+      fetchModalidades(); // Refresh the data
     } catch (error) {
       console.error('Erro ao enviar os dados do formulário', error);
     }
@@ -45,7 +47,7 @@ export default function TemporaryStudentRegistration() {
   
 
   return (
-    <Layout>
+    
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box sx={BoxStyleCadastro}>
@@ -60,6 +62,7 @@ export default function TemporaryStudentRegistration() {
                   {...register('nomeAluno')}
                 />
               </Grid>
+              <Divider/>
               <Grid item xs={12}>
                 <TextField
                   select
@@ -75,7 +78,7 @@ export default function TemporaryStudentRegistration() {
                     </MenuItem>
                   ))}
                 </TextField>
-              </Grid>
+              D</Grid>
             </Grid>
             <Button type="submit" variant="contained" disabled={isSubmitting}>
               {isSubmitting ? 'Processando...' : 'Cadastrar aluno temporariamente'}
@@ -83,6 +86,6 @@ export default function TemporaryStudentRegistration() {
           </Box>
         </form>
       </Container>
-    </Layout>
+  
   );
 }

@@ -118,7 +118,7 @@ export default function AdminPage() {
     </Box>
   );
   // Remove this const when copying and pasting into your project.
-
+//StudentTemporary
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
