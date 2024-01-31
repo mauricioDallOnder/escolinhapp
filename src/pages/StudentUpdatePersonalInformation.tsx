@@ -33,6 +33,9 @@ import {
   fieldsTermosAvisos,
   opcoesTermosAvisos,
 } from "@/utils/Constants";
+import { GetServerSideProps } from "next";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function StudentUpdatePersonalInformation() {
   const { updateDataInApi, modalidades } = useContext(DataContext);
@@ -708,3 +711,20 @@ export default function StudentUpdatePersonalInformation() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getServerSession(context.req, context.res, authOptions);
+  
+    // Se não tiver sessão ou não for admin, redirecione para a página de login
+    if (!session || session.user.role !== "admin") {
+      return {
+        redirect: {
+          destination: "/NotAllowPage",
+          permanent: false,
+        },
+      };
+    }
+  
+    // Retornar props aqui se a permissão for válida
+    return { props: { /* props adicionais aqui */ } };
+  };

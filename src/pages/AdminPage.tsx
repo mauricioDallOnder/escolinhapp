@@ -5,7 +5,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -21,6 +20,9 @@ import { useData } from "@/context/context";
 import { TurmasInfoTableNoSSR } from "@/components/AdminPageTable/DynamicComponents";
 const drawerWidth = 240;
 import Link from "next/link";
+import { GetServerSideProps } from "next";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function AdminPage() {
   const { modalidades, fetchModalidades } = useData();
@@ -115,7 +117,7 @@ export default function AdminPage() {
               <MailIcon />
             </ListItemIcon>
             <ListItemText>
-              <Link href="/StudentPresenceTable">Atualização de dados cadastrais</Link>
+              <Link href="/StudentUpdatePersonalInformation">Atualização de dados cadastrais</Link>
             </ListItemText>
           </ListItemButton>
         </ListItem>
@@ -210,3 +212,20 @@ export default function AdminPage() {
     </Box>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getServerSession(context.req, context.res, authOptions);
+
+  // Se não tiver sessão ou não for admin, redirecione para a página de login
+  if (!session || session.user.role !== "admin") {
+    return {
+      redirect: {
+        destination: "/NotAllowPage",
+        permanent: false,
+      },
+    };
+  }
+
+  // Retornar props aqui se a permissão for válida
+  return { props: { /* props adicionais aqui */ } };
+};

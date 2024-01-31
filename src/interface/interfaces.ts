@@ -78,6 +78,7 @@ export interface StudentPresenceTableProps {
   setAlunosDaTurma: React.Dispatch<React.SetStateAction<Aluno[]>>;
   modalidade: string;
   nomeDaTurma: string;
+  alunoId:number;
 }
 
 export interface AdminTableProps{

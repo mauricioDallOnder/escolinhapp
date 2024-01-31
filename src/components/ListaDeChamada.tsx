@@ -56,9 +56,12 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
 
   // Gera uma lista de dias com base no mês selecionado
   const daysInMonth =
-    alunosDaTurma.length > 0
-      ? Object.keys(alunosDaTurma[0].presencas[selectedMonth] || {})
-      : [];
+  alunosDaTurma.length > 0
+    ? Object.keys(
+        alunosDaTurma.find((aluno) => aluno !== null)?.presencas[selectedMonth] || {}
+      )
+    : [];
+
 
   const handleOpenModal = (aluno: Aluno) => {
     setSelectedAluno(aluno);
@@ -79,11 +82,10 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
     return aluno && aluno.nome.toLowerCase().includes(search.toLowerCase());
   });
   
-
-  const toggleAttendance = (studentIndex: number, day: string) => {
+  const toggleAttendance = (alunoId: number, day: string) => {
     setAlunosDaTurma((current) =>
-      current.map((student, index) => {
-        if (index === studentIndex) {
+      current.map((student) => {
+        if (student !== null && student.id === alunoId) {
           const updatedAttendance = {
             ...student.presencas,
             [selectedMonth]: {
@@ -91,33 +93,38 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
               [day]: !student.presencas[selectedMonth][day],
             },
           };
-
+  
           // Preparar dados para a atualização
           const alunoUpdateData = {
             ...student,
             modalidade: modalidade,
             nomeDaTurma: nomeDaTurma,
-            alunoId: student.nome,
+            // Converta alunoId para string aqui
+            alunoId: alunoId.toString(),
             presencas: updatedAttendance,
           };
-
+  
           // Chama a função do contexto para atualizar as presenças
           updateAttendanceInApi(alunoUpdateData);
-
+  
           return { ...student, presencas: updatedAttendance };
         }
         return student;
       })
     );
   };
+  
+  
 
 
   const countPresentStudents = () => {
     return alunosDaTurma.reduce((count, aluno) => {
-      // Incrementa o contador se o aluno estiver presente no dia selecionado
-      return count + (aluno.presencas[selectedMonth] && aluno.presencas[selectedMonth][selectedDay] ? 1 : 0);
+      // Verifica se o aluno não é nulo e se tem presenças registradas para o mês e dia selecionados
+      const isPresent = aluno && aluno.presencas && aluno.presencas[selectedMonth] && aluno.presencas[selectedMonth][selectedDay];
+      return count + (isPresent ? 1 : 0);
     }, 0);
   };
+  
   
   return (
     <Container>
@@ -218,7 +225,7 @@ export const ListaDeChamada: React.FC<StudentPresenceTableProps> = ({
                   <TableCell
                     align="center"
                     sx={{color:"black",fontWeight:"bold"}}
-                    onClick={() => toggleAttendance(index, selectedDay)}
+                    onClick={() => toggleAttendance(aluno.id, selectedDay)}
                   >
                     {aluno.presencas[selectedMonth][selectedDay] ? "." : "F"}
                   </TableCell>
