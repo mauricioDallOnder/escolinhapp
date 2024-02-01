@@ -94,7 +94,7 @@ export default function MoveStudentForm() {
         noValidate
         sx={BoxStyleCadastro}
       >
-        <HeaderForm titulo={"Mudar aluno de turma"}/>
+        <HeaderForm titulo={"Mudança de Turma"}/>
         <Autocomplete
           options={alunosOptions}
           getOptionLabel={(option) => option.nome}

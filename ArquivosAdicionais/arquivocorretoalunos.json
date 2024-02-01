@@ -51,11 +51,11 @@
           ],
           "capacidade_atual_da_turma": 0,
           "capacidade_maxima_da_turma": 9999999,
-          "categoria": "excluidos",
+          "categoria": "arquivados",
           "contadorAlunos": 1,
-          "modalidade": "excluidos",
-          "nome_da_turma": "excluidos",
-          "nucleo": "excluidos"
+          "modalidade": "arquivados",
+          "nome_da_turma": "arquivados",
+          "nucleo": "arquivados"
         }
       ]
     },
@@ -110,11 +110,11 @@
           ],
           "capacidade_atual_da_turma": 0,
           "capacidade_maxima_da_turma": 9999999,
-          "categoria": "arquivados",
+          "categoria": "excluidos",
           "contadorAlunos": 1,
-          "modalidade": "arquivados",
-          "nome_da_turma": "arquivados",
-          "nucleo": "arquivados"
+          "modalidade": "excluidos",
+          "nome_da_turma": "excluidos",
+          "nucleo": "excluidos"
         }
       ]
     },

@@ -132,7 +132,8 @@ export default function TemporaryStudentRegistration({
                         modalidade.nome !== "futebol" &&
                         modalidade.nome !== "volei" &&
                         modalidade.nome !== "futsal" &&
-                        modalidade.nome !== "arquivados"
+                        modalidade.nome !== "arquivados" &&
+                        modalidade.nome !== "excluidos"
                     )
                     .map((modalidade) => (
                       <MenuItem key={modalidade.nome} value={modalidade.nome}>

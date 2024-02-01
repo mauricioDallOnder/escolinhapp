@@ -91,7 +91,7 @@ export default function AdminPage() {
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentUpdateTurmas">Configuração de Turmas</Link>} />
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentUpdateTurmas">Trocar turma de aluno</Link>} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -102,7 +102,7 @@ export default function AdminPage() {
             <ListItemIcon>
               <ListAltIcon />
             </ListItemIcon>
-            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentPresenceTable">Lista de Presença</Link>} />
+            <ListItemText primary={<Link style={{ textDecoration: 'none', color: 'inherit' }} href="/StudentPresenceTable">Lista de Chamada</Link>} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

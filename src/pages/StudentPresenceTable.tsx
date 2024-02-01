@@ -203,7 +203,7 @@ export default function StudentPresenceTable() {
           Adicionar aluno temporário
         </Button>
         <Button sx={{fontSize: "12px",mt:"8px" }} color="success"
-          variant="contained" onClick={refreshPage}>Salvar</Button>
+          variant="contained" onClick={refreshPage}>Salvar Dados/Atualizar Pagina</Button>
           </Box>
         </form>
         <Modal
