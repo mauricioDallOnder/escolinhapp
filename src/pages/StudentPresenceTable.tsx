@@ -36,7 +36,9 @@ export default function StudentPresenceTable() {
   const [alunosDaTurma, setAlunosDaTurma] = useState<Aluno[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const watchedModalidade = watch("modalidade");
-
+  const refreshPage = ()=>{
+    alert('Dados salvos com sucesso')
+    window.location.reload();  }
   useEffect(() => {
     if (watchedModalidade) {
       const turmas = modalidades.find(
@@ -174,13 +176,7 @@ export default function StudentPresenceTable() {
                   </TextField>
                 </Grid>
               </Grid>
-              <Button
-                sx={{ width: "100%", marginBottom: "12px" }}
-                type="submit"
-                variant="contained"
-              >
-                Pesquisar Turma
-              </Button>
+             
               {alunosDaTurma.length > 0 && (
                 <ListaDeChamada
                   alunosDaTurma={alunosDaTurma}
@@ -191,6 +187,13 @@ export default function StudentPresenceTable() {
               )}
             </List>
             <Button
+                sx={{ width: "100%", marginBottom: "8px" }}
+                type="submit"
+                variant="contained"
+              >
+                Pesquisar Turma
+              </Button>
+            <Button
           sx={{fontSize: "12px" }}
           color="error"
           variant="contained"
@@ -198,6 +201,8 @@ export default function StudentPresenceTable() {
         >
           Adicionar aluno temporário
         </Button>
+        <Button sx={{fontSize: "12px",mt:"8px" }} color="success"
+          variant="contained" onClick={refreshPage}>Salvar</Button>
           </Box>
         </form>
         <Modal
@@ -208,7 +213,7 @@ export default function StudentPresenceTable() {
       >
         <TemporaryStudentRegistration handleCloseModal={handleCloseModal} />
       </Modal>
-       
+      
       </Container>
     </Layout>
   );
