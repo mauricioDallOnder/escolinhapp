@@ -1,8 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import {
-  FormValuesStudent,
-  Turma,
-} from "@/interface/interfaces";
+import { FormValuesStudent, Turma } from "@/interface/interfaces";
 import { useEffect, useState } from "react";
 import {
   extrairDiaDaSemana,
@@ -13,6 +10,9 @@ import {
   fieldsTermosAvisos,
   gerarPresencasParaAluno,
   opcoesTermosAvisos,
+  vinculosempresasparceiras,
+  fieldsUniforme,
+  fieldsUsoImagem,
 } from "@/utils/Constants";
 import {
   Box,
@@ -27,11 +27,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  BoxStyleCadastro,
-  ListStyle,
-  TituloSecaoStyle,
-} from "@/utils/Styles";
+import { BoxStyleCadastro, ListStyle, TituloSecaoStyle } from "@/utils/Styles";
 import { useData } from "@/context/context";
 import { HeaderForm } from "@/components/HeaderDefaultForm";
 import Layout from "@/components/TopBarComponents/Layout";
@@ -42,6 +38,7 @@ export default function StudentRegistration() {
     handleSubmit,
     watch,
     reset,
+    setValue,
     formState: { isSubmitting, errors },
   } = useForm<FormValuesStudent>();
   const { modalidades, fetchModalidades, sendDataToApi } = useData(); // Usando o hook useData
@@ -71,13 +68,21 @@ export default function StudentRegistration() {
     ) {
       try {
         await sendDataToApi(data);
-        alert("Cadastro efetuado com sucesso");
-        reset(); // Resetando o formulário após o envio
+        alert(
+          "O aluno foi cadastrado com sucesso na modalidade selecionada. Se desejar cadastrar em outra modalidade, selecione os novos valores nos campos 'Modalidade', 'Local de treinamento' e 'Turma', e envie o formulário novamente."
+        );
+        // Resetar apenas os campos de seleção
+        setValue("modalidade", "");
+        setValue("turmaSelecionada", "");
+        setSelectedNucleo("");
+        setTurmasDisponiveis([]);
       } catch (error) {
         console.error("Erro ao enviar os dados do formulário", error);
       }
     } else {
-      alert("A turma selecionada não possui mais vagas disponíveis.");
+      alert(
+        "Não há vagas disponíveis na turma selecionada. Por favor, escolha outra turma."
+      );
     }
   };
 
@@ -101,6 +106,11 @@ export default function StudentRegistration() {
     setTurmasDisponiveis(turmasFiltradas || []);
   }, [selectedNucleo, modalidades, selectedModalidade]);
 
+  // Função para limpar todos os campos do formulário
+  const clearForm = () => {
+    reset();
+  };
+
   return (
     <Layout>
       <Container>
@@ -111,7 +121,7 @@ export default function StudentRegistration() {
             </Box>
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 1 - Dados de Identificação Atleta
+                Seção 1 - Identificação do Aluno
               </Typography>
               <Grid container spacing={2}>
                 {fieldsIdentificacao.map(({ label, id }) => (
@@ -134,7 +144,7 @@ export default function StudentRegistration() {
 
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 2 - Dados Gerais Atleta
+                Seção 2 - Informações Pessoais e de Saúde do Aluno
               </Typography>
               <Grid container spacing={2}>
                 {fieldsDadosGeraisAtleta.map(({ label, id }) => (
@@ -156,7 +166,7 @@ export default function StudentRegistration() {
 
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 3 - Dados de Endereço
+                Seção 3 - Endereço Residencial do Aluno
               </Typography>
               <Grid container spacing={2}>
                 {fieldsEndereco.map(({ label, id }) => (
@@ -179,7 +189,7 @@ export default function StudentRegistration() {
 
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 4 - Dados do Responsável pela Mensalidade
+                Seção 4 - Informações do Responsável Financeiro
               </Typography>
               <Grid container spacing={2}>
                 {fieldsResponsavelMensalidade.map(({ label, id }) => (
@@ -202,7 +212,84 @@ export default function StudentRegistration() {
 
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 5 - Modalidades, Turmas e Dias para Treino
+                Seção 5 - Conexões com Empresas Parceiras
+              </Typography>
+              <Grid container spacing={2}>
+                {vinculosempresasparceiras.map(({ label, id }) => (
+                  <Grid item xs={12} sm={6} key={id}>
+                    <TextField
+                      fullWidth
+                      id={id}
+                      label={label}
+                      variant="standard"
+                      sx={{
+                        borderRadius: "4px",
+                      }}
+                      required
+                      {...register(id as keyof FormValuesStudent)} // asserção de tipo aqui
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </List>
+
+            <List sx={ListStyle}>
+              <Typography sx={TituloSecaoStyle}>
+                Seção 6 - Especificações sobre o Uniforme
+              </Typography>
+              <Grid container spacing={2}>
+                {fieldsUniforme.map(({ label, id }) => (
+                  <Grid item xs={12} key={id}>
+                    <Typography
+                      variant="body1"
+                      sx={{ marginBottom: 2, color: "black" }}
+                    >
+                      {label}
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      id={id}
+                      label="Tamanho do Uniforme"
+                      variant="standard"
+                      sx={{ borderRadius: "4px" }}
+                      required
+                      {...register(id as keyof FormValuesStudent)} // asserção de tipo aqui
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </List>
+
+            <List sx={ListStyle}>
+              <Typography sx={TituloSecaoStyle}>
+                Seção 7 - Autorização para Uso de Imagem
+              </Typography>
+              <Grid container spacing={2}>
+                {fieldsUsoImagem.map(({ label, id }) => (
+                  <Grid item xs={12} key={id}>
+                    <Typography
+                      variant="body1"
+                      sx={{ marginBottom: 2, color: "black" }}
+                    >
+                      {label}
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      id={id}
+                      label="Tamanho do Uniforme"
+                      variant="standard"
+                      sx={{ borderRadius: "4px" }}
+                      required
+                      {...register(id as keyof FormValuesStudent)} // asserção de tipo aqui
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </List>
+
+            <List sx={ListStyle}>
+              <Typography sx={TituloSecaoStyle}>
+                Seção 8 - Escolha de Modalidades e Turmas
               </Typography>
               <Grid container spacing={2}>
                 {/* Campo para selecionar a modalidade */}
@@ -278,7 +365,7 @@ export default function StudentRegistration() {
 
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 6 - Avisos e Termos de Responsabilidade
+                Seção 9 - Acordos e Termos de Responsabilidade
               </Typography>
               <Grid container spacing={2}>
                 {fieldsTermosAvisos.map(({ label, id }) => (
@@ -330,6 +417,15 @@ export default function StudentRegistration() {
             </List>
             <Button type="submit" variant="contained" disabled={isSubmitting}>
               {isSubmitting ? "Enviando dados,aguarde..." : "Cadastrar Atleta"}
+            </Button>
+
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ mt: "5px" }}
+              onClick={clearForm}
+            >
+              Limpar os campos do formulário
             </Button>
           </Box>
         </form>

@@ -74,6 +74,36 @@ export default function StudentUpdatePersonalInformation() {
       setValue("nome", value.nome);
       setValue("anoNascimento", value.anoNascimento);
       setValue("telefoneComWhatsapp", value.telefoneComWhatsapp);
+      setValue("telefoneComWhatsapp", value.telefoneComWhatsapp);
+      setValue(
+        "informacoesAdicionais.rg",
+        value.informacoesAdicionais.rg
+      );
+      setValue(
+        "informacoesAdicionais.filhofuncionarioJBS",
+        value.informacoesAdicionais.filhofuncionarioJBS
+      );
+      setValue(
+        "informacoesAdicionais.socioJBS",
+        value.informacoesAdicionais.socioJBS
+      );
+      setValue(
+        "informacoesAdicionais.nomefuncionarioJBS",
+        value.informacoesAdicionais.nomefuncionarioJBS
+      );
+      setValue(
+        "informacoesAdicionais.filhofuncionariomarcopolo",
+        value.informacoesAdicionais.filhofuncionariomarcopolo
+      );
+      setValue(
+        "informacoesAdicionais.nomefuncionariomarcopolo",
+        value.informacoesAdicionais.nomefuncionariomarcopolo
+      );
+      setValue(
+        "informacoesAdicionais.uniforme",
+        value.informacoesAdicionais.uniforme
+      );
+
       setValue(
         "informacoesAdicionais.escolaEstuda",
         value.informacoesAdicionais.escolaEstuda
@@ -155,7 +185,7 @@ export default function StudentUpdatePersonalInformation() {
             {/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 1 - Dados do Atleta
+              Seção 1 - Identificação do Aluno
               </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
@@ -179,7 +209,27 @@ export default function StudentUpdatePersonalInformation() {
                     variant="standard"
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.rg", {
+                      required: true,
+                    })}
+                    label="RG "
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+              </Grid>
+            </List>
+             {/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
+             <List sx={ListStyle}>
+             <Typography sx={TituloSecaoStyle}>
+                Seção 3 - Endereço Residencial do Aluno
+              </Typography>
+              <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
                   <TextField
                     InputLabelProps={{ shrink: true }}
                     {...register("informacoesAdicionais.endereco.ruaAvenida", {
@@ -372,12 +422,13 @@ export default function StudentUpdatePersonalInformation() {
                     }}
                   />
                 </Grid>
+
               </Grid>
-            </List>
+             </List>
             {/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
             <List sx={ListStyle}>
               <Typography sx={TituloSecaoStyle}>
-                Seção 3 - Dados do Responsável pela mensalidade
+                Seção 4 - Informações do Responsável Financeiro
               </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
@@ -648,6 +699,78 @@ export default function StudentUpdatePersonalInformation() {
                       required: true,
                     })}
                     label="Autoriza o uso de imagem? "
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.filhofuncionarioJBS", {
+                      required: true,
+                    })}
+                    label="É filho(a) de funcionário(a) da JBS? "
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.socioJBS", {
+                      required: true,
+                    })}
+                    label="É sócio da sede da JBS?"
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.nomefuncionarioJBS", {
+                      required: true,
+                    })}
+                    label="Nome do Funcionário(a) da JBS"
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.filhofuncionariomarcopolo", {
+                      required: true,
+                    })}
+                    label="É filho(a) de funcionário(a) da Marcopolo?"
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.nomefuncionariomarcopolo", {
+                      required: true,
+                    })}
+                    label="Nome do Funcionário(a) da Marcopolo"
+                    fullWidth
+                    margin="normal"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    {...register("informacoesAdicionais.uniforme", {
+                      required: true,
+                    })}
+                    label="Tamanho Escolhido para o uniforme"
                     fullWidth
                     margin="normal"
                     variant="standard"

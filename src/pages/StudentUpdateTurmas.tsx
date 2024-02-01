@@ -94,7 +94,7 @@ export default function MoveStudentForm() {
         noValidate
         sx={BoxStyleCadastro}
       >
-        <HeaderForm titulo={"Atualização"}/>
+        <HeaderForm titulo={"Mudar aluno de turma"}/>
         <Autocomplete
           options={alunosOptions}
           getOptionLabel={(option) => option.nome}
@@ -130,6 +130,7 @@ export default function MoveStudentForm() {
           }}
           error={!!errors.modalidadeOrigem}
           helperText={errors.modalidadeOrigem?.message}
+          disabled
         />
         <TextField
           margin="normal"
@@ -142,6 +143,7 @@ export default function MoveStudentForm() {
           InputLabelProps={{
             shrink: true,
           }}
+          disabled
           error={!!errors.nomeDaTurmaOrigem}
           helperText={errors.nomeDaTurmaOrigem?.message}
         />

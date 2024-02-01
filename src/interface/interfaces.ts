@@ -34,6 +34,13 @@ export interface InformacoesAdicionais {
   imagem: string;
   avisaAusencia: string;
   desconto: string;
+  rg:string;
+  filhofuncionarioJBS:string;
+  socioJBS:string;
+  nomefuncionarioJBS:string;
+  filhofuncionariomarcopolo:string
+  nomefuncionariomarcopolo:string
+  uniforme:string
 }
 
 export interface Aluno {

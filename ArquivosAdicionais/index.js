@@ -121,6 +121,7 @@ const mapeamentoTurmas = {
         "Vitor Emanuel Borges da Silva",
         "Vitor Von Mulhen Da Silva",
         "CARLOS EDUARDO FERNANDES FIALHO",
+        "Augusto Carrer Cislaghi"
     ],
     "VOLEI_SUB_13_LR_TERCA_18H30": [
         "Alice Camera Bernal",
@@ -217,7 +218,8 @@ const mapeamentoTurmas = {
         "Kauã Oliveira Porto",
         "Luiza Helena Schussler Bizol",
         "Mateus Kilder Guedes",
-        "Vitória Heloísa Barchfelde"
+        "Vitória Heloísa Barchfelde",
+        "Nicolas Brando"
     ],
     "VOLEI_SUB_13_FM_SABADO_9H": [
         "Adrielly Córdova Macêdo",
@@ -314,7 +316,8 @@ const mapeamentoTurmas = {
         "Eduardo Koltz",
         "Martina de Castilhos",
         "Miguel Rodrigues",
-        "Murilo Bitencourt Cavalheiro"
+        "Murilo Bitencourt Cavalheiro",
+        "Nicolas Misturini Miranda"
     ],
     "SUB_09_NE_TERCA_20H": [
         "Adrian Da Cruz Moraes",
@@ -360,7 +363,8 @@ const mapeamentoTurmas = {
         "Pietro Silva da Costa",
         "Samuel Paim Barea",
         "Vinícius Gabriel Rodrigues ferrando",
-        "Leonardo Amândio Bissani"
+        "Leonardo Amândio Bissani",
+        "Vinícius Misturini Miranda"
     ],
     "SUB_11_NE_SEXTA_20H": [
         "Bento Brambilla Bianchi",
@@ -743,7 +747,8 @@ const mapeamentoTurmas = {
         "Gabriel Langaro",
         "Gabriel Lemos dos Passos",
         "Lorenzo de Oliveira",
-        "Lorenzo Moraes Soares"
+        "Lorenzo Moraes Soares",
+        "Lucas Guindo da Rocha"
     ],
     "SUB_09_AZ_QUINTA_19H30": [
         "Arthur Castilho Velho",
@@ -795,7 +800,6 @@ const mapeamentoTurmas = {
         "Henrique Sasset Zanette",
         "Iago de Oliveira Lemos",
         "Jhonatan Ferreira Nunes",
-        "Jhoniel Jesus Gomez Barros",
         "Kauã Rodrigues Nadalon",
         "Kauan Rodrigues da Silva Lara",
         "Leonardo Amândio Bissani",
