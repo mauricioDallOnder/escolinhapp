@@ -23,7 +23,7 @@ This project is a student registration system for various sports modalities, all
 To run the project on your local machine, follow the steps below:
 1. Clone the repository to your local machine:
 ```bash
-git clone https://your-repository.git
+git clone https://github.com/mauricioDallOnder/escolinhapp.git
    ```
 2. Install the dependencies and start the development server:
    
